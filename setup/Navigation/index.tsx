@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import ChooseMinifigScreen from '../../screens/ChooseMinifigScreen';
+import ChooseMinifigScreen from 'screens/ChooseMinifigScreen';
 import { MainStackParamList } from './types';
 
 const { Navigator, Screen } = createStackNavigator<MainStackParamList>();
