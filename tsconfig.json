@@ -9,8 +9,15 @@
     "paths": {
       "screens/*": ["./screens/*"],
       "setup/*": ["./setup/*"],
-      "theme/*": ["./theme/*"]
+      "theme/*": ["./theme/*"],
+      "components/*": ["./components/*"]
     }
   },
-  "include": ["./**/*", "./screens/**/*", "./setup/**/*", "./theme/**/*"]
+  "include": [
+    "./**/*",
+    "./screens/**/*",
+    "./setup/**/*",
+    "./theme/**/*",
+    "./components/**/*"
+  ]
 }

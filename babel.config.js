@@ -10,6 +10,7 @@ module.exports = function (api) {
             screens: './screens',
             setup: './setup',
             theme: './theme',
+            components: './components',
           },
         },
       ],
