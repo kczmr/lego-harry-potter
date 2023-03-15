@@ -5,10 +5,12 @@
     "strict": true,
     "baseUrl": ".",
     "target": "ES5",
+    "types": ["@types/styled-components-react-native"],
     "paths": {
       "screens/*": ["./screens/*"],
-      "setup/*": ["./setup/*"]
+      "setup/*": ["./setup/*"],
+      "theme/*": ["./theme/*"]
     }
   },
-  "include": ["./**/*", "./screens/**/*", "./setup/**/*"]
+  "include": ["./**/*", "./screens/**/*", "./setup/**/*", "./theme/**/*"]
 }

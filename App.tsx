@@ -1,11 +1,14 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from 'setup/Navigation';
+import ThemeWrapper from 'theme/ThemeWrapper';
 
 const App: React.FC = () => (
-  <NavigationContainer>
-    <Navigation />
-  </NavigationContainer>
+  <ThemeWrapper>
+    <NavigationContainer>
+      <Navigation />
+    </NavigationContainer>
+  </ThemeWrapper>
 );
 
 export default App;
