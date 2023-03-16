@@ -25,10 +25,10 @@ describe('Button', () => {
   });
 
   test('renders disabled state', () => {
-    const { getByA11yState } = render(
+    const { getByRole } = render(
       <Button {...{ label }} onPress={() => undefined} isDisabled />
     );
-    const element = getByA11yState({ disabled: true });
+    const element = getByRole('button', { disabled: true });
 
     expect(element).toBeTruthy();
   });

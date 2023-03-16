@@ -3,6 +3,7 @@ export default {
   black: '#070709',
   grey: '#4E4E61',
   lightGrey: '#F6F6F7',
-  white: '#FEFEFE',
+  white: '#FFFFFF',
   orange: '#FC863A',
+  purple: '#1C1E2F',
 };

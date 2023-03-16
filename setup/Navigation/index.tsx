@@ -6,7 +6,7 @@ import { MainStackParamList } from './types';
 const { Navigator, Screen } = createStackNavigator<MainStackParamList>();
 
 const Navigation: React.FC = () => (
-  <Navigator>
+  <Navigator screenOptions={{ headerShown: false }}>
     <Screen name='ChooseMinifigScreen' component={ChooseMinifigScreen} />
   </Navigator>
 );
