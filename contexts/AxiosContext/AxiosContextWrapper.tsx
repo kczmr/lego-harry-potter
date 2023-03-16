@@ -17,7 +17,7 @@ const AxiosContextWrapper: React.FC<PropsWithChildren> = ({ children }) => {
 
     return {
       // url should be stored in envs
-      baseURL: 'https://rebrickable.com/api/v3/lego',
+      baseURL: 'https://rebrickable.com/api/v3/lego/',
       headers,
     };
   }, []);
