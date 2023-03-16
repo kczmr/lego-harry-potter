@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const StyledButton = styled.Pressable.attrs({
+export const StyledButton = styled.TouchableOpacity.attrs({
   activeOpacity: 0.9,
 })`
   align-items: center;
