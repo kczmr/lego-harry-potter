@@ -11,6 +11,7 @@ module.exports = function (api) {
             setup: './setup',
             theme: './theme',
             components: './components',
+            contexts: './contexts',
           },
         },
       ],

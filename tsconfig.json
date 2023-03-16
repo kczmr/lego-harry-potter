@@ -10,7 +10,8 @@
       "screens/*": ["./screens/*"],
       "setup/*": ["./setup/*"],
       "theme/*": ["./theme/*"],
-      "components/*": ["./components/*"]
+      "components/*": ["./components/*"],
+      "contexts/*": ["./contexts/*"]
     }
   },
   "include": [
@@ -19,6 +20,7 @@
     "./setup/**/*",
     "./theme/**/*",
     "./components/**/*",
+    "./contexts/**/*",
     "./@types/*"
   ]
 }
