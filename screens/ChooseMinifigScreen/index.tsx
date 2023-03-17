@@ -24,10 +24,15 @@ const ChooseMinifigScreen: React.FC<ChooseMinifigScreenProps> = ({
   } = useChooseMinifigScreen();
   const { space, colors } = useTheme();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isUserSelecting, setIsUserSelecting] = useState(false);
+  const [activeMinifigId, setActiveMinifigId] = useState('');
   const flatlistRef = useRef<FlatList<MinifigsItem>>(null);
   const viewableItemsChanged = useRef(
     ({ viewableItems }: { viewableItems: ViewToken[] }) => {
-      if (viewableItems.length) setActiveIndex(viewableItems[0].index || 0);
+      if (viewableItems.length) {
+        setActiveIndex(viewableItems[0].index || 0);
+        setActiveMinifigId(viewableItems[0].key);
+      }
     }
   ).current;
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
@@ -42,14 +47,19 @@ const ChooseMinifigScreen: React.FC<ChooseMinifigScreenProps> = ({
         CHOOSE YOUR MINIFIG
       </StyledChooseMinifigScreenTitle>
       <FlatList
+        onScrollBeginDrag={() => setIsUserSelecting(true)}
+        onScrollEndDrag={() => setIsUserSelecting(false)}
         ref={flatlistRef}
         data={items}
         keyExtractor={({ key }) => key}
-        renderItem={({ item: { set_url, ...restItem }, index }) => {
+        renderItem={({ item: { set_url, key, ...restItem }, index }) => {
           return (
             <MinifigTile
               {...restItem}
-              onPress={() => scrollToIndex(index)}
+              onPress={() => {
+                scrollToIndex(index);
+                setActiveMinifigId(key);
+              }}
               onDetailsPress={() =>
                 navigation?.navigate('WebViewScreen', { url: set_url })
               }
@@ -80,7 +90,15 @@ const ChooseMinifigScreen: React.FC<ChooseMinifigScreenProps> = ({
       />
       {items.length ? (
         <Box flex={1}>
-          <Button label='CHOOSE FIGURE' onPress={() => undefined} />
+          <Button
+            label='CHOOSE FIGURE'
+            onPress={() =>
+              navigation?.navigate('OrderMinifigScreen', {
+                minifigId: activeMinifigId,
+              })
+            }
+            isDisabled={isUserSelecting}
+          />
         </Box>
       ) : null}
     </Box>

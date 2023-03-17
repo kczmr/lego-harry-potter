@@ -5,6 +5,7 @@ import { useTheme } from 'styled-components/native';
 import Box from 'components/Box';
 import ChooseMinifigScreen from 'screens/ChooseMinifigScreen';
 import WebViewScreen from 'screens/WebViewScreen';
+import OrderMinifigScreen from 'screens/OrderMinifigScreen';
 import { NavigationStackParamList } from './types';
 
 const { Navigator, Screen } = createStackNavigator<NavigationStackParamList>();
@@ -22,6 +23,7 @@ const Navigation: React.FC = () => {
     >
       <Screen name='ChooseMinifigScreen' component={ChooseMinifigScreen} />
       <Screen name='WebViewScreen' component={WebViewScreen} />
+      <Screen name='OrderMinifigScreen' component={OrderMinifigScreen} />
     </Navigator>
   );
 };
