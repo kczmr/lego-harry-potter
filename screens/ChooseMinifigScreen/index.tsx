@@ -52,21 +52,19 @@ const ChooseMinifigScreen: React.FC<ChooseMinifigScreenProps> = ({
         ref={flatlistRef}
         data={items}
         keyExtractor={({ key }) => key}
-        renderItem={({ item: { set_url, key, ...restItem }, index }) => {
-          return (
-            <MinifigTile
-              {...restItem}
-              onPress={() => {
-                scrollToIndex(index);
-                setActiveMinifigId(key);
-              }}
-              onDetailsPress={() =>
-                navigation?.navigate('WebViewScreen', { url: set_url })
-              }
-              isActive={activeIndex === index}
-            />
-          );
-        }}
+        renderItem={({ item: { set_url, key, ...restItem }, index }) => (
+          <MinifigTile
+            {...restItem}
+            onPress={() => {
+              scrollToIndex(index);
+              setActiveMinifigId(key);
+            }}
+            onDetailsPress={() =>
+              navigation?.navigate('WebViewScreen', { url: set_url })
+            }
+            isActive={activeIndex === index}
+          />
+        )}
         contentContainerStyle={{ marginTop: space.l * 2 }}
         ListHeaderComponent={() => <Box ml='m' />}
         ItemSeparatorComponent={() => <Box ml='m' />}

@@ -4,6 +4,8 @@ import { OrderMinifigSummaryScreenProps } from './types';
 
 const OrderMinifigSummaryScreen: React.FC<
   OrderMinifigSummaryScreenProps
-> = () => <Box />;
+> = () => (
+  <Box /> // sorry i didnt have more time :(
+);
 
 export default OrderMinifigSummaryScreen;
