@@ -13,11 +13,12 @@ export const useChooseMinifigScreen = (): UseChooseMinifigScreenReturnType => {
           .sort(() => Math.random() - Math.random())
           .slice(0, 5)
           .map(
-            ({ name, set_img_url, set_num }) =>
+            ({ name, set_img_url, set_num, set_url }) =>
               ({
                 title: name,
                 imageUrl: set_img_url,
                 key: set_num,
+                set_url,
               } as MinifigsItem)
           ),
       [data]

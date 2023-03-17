@@ -2,11 +2,12 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from 'styled-components/native';
-import ChooseMinifigScreen from 'screens/ChooseMinifigScreen';
 import Box from 'components/Box';
-import { MainStackParamList } from './types';
+import ChooseMinifigScreen from 'screens/ChooseMinifigScreen';
+import WebViewScreen from 'screens/WebViewScreen';
+import { NavigationStackParamList } from './types';
 
-const { Navigator, Screen } = createStackNavigator<MainStackParamList>();
+const { Navigator, Screen } = createStackNavigator<NavigationStackParamList>();
 
 const Navigation: React.FC = () => {
   const { top } = useSafeAreaInsets();
@@ -20,6 +21,7 @@ const Navigation: React.FC = () => {
       }}
     >
       <Screen name='ChooseMinifigScreen' component={ChooseMinifigScreen} />
+      <Screen name='WebViewScreen' component={WebViewScreen} />
     </Navigator>
   );
 };

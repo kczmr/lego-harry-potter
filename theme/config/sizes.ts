@@ -9,4 +9,5 @@ export default {
     },
     radiusWidth: 6,
   },
+  webViewHeader: 64,
 };

@@ -2,6 +2,7 @@ import React, { PropsWithChildren, useMemo } from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import Axios from 'axios';
 import { AxiosContextProvider } from './index';
+import { API_KEY } from './consts';
 
 const AxiosContextWrapper: React.FC<PropsWithChildren> = ({ children }) => {
   const queryClient = new QueryClient({
@@ -12,7 +13,9 @@ const AxiosContextWrapper: React.FC<PropsWithChildren> = ({ children }) => {
     const headers = {
       'Content-Type': 'application/json',
       accept: 'application/json',
-      Authorization: 'key 83b380e9c9b58d09869ac1fd473002b3',
+
+      // key should be stored in envs
+      Authorization: `key ${API_KEY}`,
     };
 
     return {

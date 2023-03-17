@@ -1,3 +1,4 @@
-export type MainStackParamList = {
+export type NavigationStackParamList = {
   ChooseMinifigScreen: undefined;
+  WebViewScreen: { url: string };
 };

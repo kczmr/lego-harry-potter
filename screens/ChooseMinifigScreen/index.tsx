@@ -1,18 +1,28 @@
 import React, { useRef, useState } from 'react';
-import { Dimensions, FlatList, ViewToken } from 'react-native';
+import {
+  ActivityIndicator,
+  Dimensions,
+  FlatList,
+  ViewToken,
+} from 'react-native';
 import { useTheme } from 'styled-components/native';
 import Box from 'components/Box';
 import MinifigTile from 'components/MinifigTile';
 import Button from 'components/Button';
 import { useChooseMinifigScreen } from './hooks';
 import { StyledChooseMinifigScreenTitle } from './styles';
-import { MinifigsItem } from './types';
+import { ChooseMinifigScreenProps, MinifigsItem } from './types';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-const ChooseMinifigScreen: React.FC = () => {
-  const { items } = useChooseMinifigScreen();
-  const { space } = useTheme();
+const ChooseMinifigScreen: React.FC<ChooseMinifigScreenProps> = ({
+  navigation,
+}) => {
+  const {
+    items,
+    minifigsQuery: { isFetching },
+  } = useChooseMinifigScreen();
+  const { space, colors } = useTheme();
   const [activeIndex, setActiveIndex] = useState(0);
   const flatlistRef = useRef<FlatList<MinifigsItem>>(null);
   const viewableItemsChanged = useRef(
@@ -35,20 +45,27 @@ const ChooseMinifigScreen: React.FC = () => {
         ref={flatlistRef}
         data={items}
         keyExtractor={({ key }) => key}
-        renderItem={({ item, index }) => {
+        renderItem={({ item: { set_url, ...restItem }, index }) => {
           return (
             <MinifigTile
-              {...item}
+              {...restItem}
               onPress={() => scrollToIndex(index)}
-              onDetailsPress={() => undefined}
+              onDetailsPress={() =>
+                navigation?.navigate('WebViewScreen', { url: set_url })
+              }
               isActive={activeIndex === index}
             />
           );
         }}
-        contentContainerStyle={{ marginTop: 100 }}
+        contentContainerStyle={{ marginTop: space.l * 2 }}
         ListHeaderComponent={() => <Box ml='m' />}
         ItemSeparatorComponent={() => <Box ml='m' />}
-        ListFooterComponent={() => <Box ml='m' />}
+        ListFooterComponent={() => <Box mr='m' />}
+        ListEmptyComponent={() =>
+          isFetching ? (
+            <ActivityIndicator size='large' color={colors.orange} />
+          ) : null
+        }
         showsHorizontalScrollIndicator={false}
         horizontal
         // this should be recalculated
@@ -61,9 +78,11 @@ const ChooseMinifigScreen: React.FC = () => {
         viewabilityConfig={viewConfig}
         directionalLockEnabled
       />
-      <Box flex={1}>
-        <Button label='CHOOSE FIGURE' onPress={() => undefined} />
-      </Box>
+      {items.length ? (
+        <Box flex={1}>
+          <Button label='CHOOSE FIGURE' onPress={() => undefined} />
+        </Box>
+      ) : null}
     </Box>
   );
 };

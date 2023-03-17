@@ -19,7 +19,10 @@ const MinifigTile: React.FC<MinifigTileProps> = ({
     {/* add image loading */}
     <StyledMinifigImage testID='minifigImage' source={{ uri: imageUrl }} />
     <StyledMinifigTitle numberOfLines={2}>{title}</StyledMinifigTitle>
-    <Pressable onPress={onDetailsPress}>
+    <Pressable
+      hitSlop={{ top: 4, right: 4, bottom: 4, left: 4 }}
+      onPress={onDetailsPress}
+    >
       <StyledMinifigDetailsText>Show details</StyledMinifigDetailsText>
     </Pressable>
   </StyledMinifigTile>
