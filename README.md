@@ -28,15 +28,13 @@ expo install
 
 ## Running the project
 
-## For some safety before you run project
-
-run
+For some safety before you run project run
 
 ```
 yarn cache clean
 ```
 
-Use
+then use
 
 ```
 yarn start
