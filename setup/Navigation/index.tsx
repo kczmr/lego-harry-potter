@@ -6,6 +6,7 @@ import Box from 'components/Box';
 import ChooseMinifigScreen from 'screens/ChooseMinifigScreen';
 import WebViewScreen from 'screens/WebViewScreen';
 import OrderMinifigScreen from 'screens/OrderMinifigScreen';
+import OrderMinifigSummaryScreen from 'screens/OrderMinifigSummaryScreen';
 import { NavigationStackParamList } from './types';
 
 const { Navigator, Screen } = createStackNavigator<NavigationStackParamList>();
@@ -20,10 +21,15 @@ const Navigation: React.FC = () => {
         header: () => <Box pt={top} />,
         cardStyle: { backgroundColor: colors.purple },
       }}
+      initialRouteName='ChooseMinifigScreen'
     >
       <Screen name='ChooseMinifigScreen' component={ChooseMinifigScreen} />
       <Screen name='WebViewScreen' component={WebViewScreen} />
       <Screen name='OrderMinifigScreen' component={OrderMinifigScreen} />
+      <Screen
+        name='OrderMinifigSummary'
+        component={OrderMinifigSummaryScreen}
+      />
     </Navigator>
   );
 };
