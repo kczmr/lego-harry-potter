@@ -10,11 +10,7 @@ const stringifyQueryParams = <T>(path: string, params: T): string => {
 
 const endpoints: MappedObject<(params?: string | MappedObject<any>) => string> =
   {
-    minifigs: (params) => {
-      const { id } = params as MappedObject<string>;
-
-      return stringifyQueryParams(`minifigs/${id}`, params);
-    },
+    minifigs: (params) => stringifyQueryParams('minifigs', params),
   };
 
 export default endpoints;

@@ -12,6 +12,7 @@ module.exports = function (api) {
             theme: './theme',
             components: './components',
             contexts: './contexts',
+            api: './api',
           },
         },
       ],

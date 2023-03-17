@@ -11,7 +11,8 @@
       "setup/*": ["./setup/*"],
       "theme/*": ["./theme/*"],
       "components/*": ["./components/*"],
-      "contexts/*": ["./contexts/*"]
+      "contexts/*": ["./contexts/*"],
+      "api/*": ["./api/*"]
     }
   },
   "include": [
@@ -21,6 +22,7 @@
     "./theme/**/*",
     "./components/**/*",
     "./contexts/**/*",
+    "./api/**/*",
     "./@types/*"
   ]
 }

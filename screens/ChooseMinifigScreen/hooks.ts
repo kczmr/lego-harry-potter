@@ -1,19 +1,27 @@
+import { useMemo } from 'react';
+import useMinifigsQuery from 'api/queries/useMinifigsQuery';
 import { UseChooseMinifigScreenReturnType, MinifigsItem } from './types';
 
 export const useChooseMinifigScreen = (): UseChooseMinifigScreenReturnType => {
-  const demoItem = {
-    title: 'Harry Potter',
-    key: '1',
-    imageUrl: 'https://cdn.rebrickable.com/media/sets/fig-000457/60621.jpg',
-  };
+  const minifigsQuery = useMinifigsQuery();
+  const { data } = minifigsQuery;
 
-  const items: MinifigsItem[] = [
-    demoItem,
-    demoItem,
-    demoItem,
-    demoItem,
-    demoItem,
-  ];
+  const items =
+    useMemo(
+      () =>
+        data?.results
+          .sort(() => Math.random() - Math.random())
+          .slice(0, 5)
+          .map(
+            ({ name, set_img_url, set_num }) =>
+              ({
+                title: name,
+                imageUrl: set_img_url,
+                key: set_num,
+              } as MinifigsItem)
+          ),
+      [data]
+    ) || [];
 
-  return { items };
+  return { items, minifigsQuery };
 };
